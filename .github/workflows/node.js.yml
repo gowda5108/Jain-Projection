@@ -1,5 +1,4 @@
-
-name: cicd pipeli
+name: cicd pipeline
 
 on:
   push:
@@ -11,19 +10,21 @@ jobs:
   compile:
     runs-on: agent 1
     steps:
-    - name: checkout
-    - uses: actions/checkout@v4
-    - name: setup node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '23'
-    -name: frontend Compilation
-     run: |
-      cd client
-      find . -name "*.js" -exec node --check {} +
-    -name: backend Compilation
-     run: |
-      cd client
-      find . -name "*.js" -exec node --check {} +
-      
-   
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+
+      - name: frontend Compilation
+        run: |
+          cd client
+          find . -name "*.js" -exec node --check {} +
+
+      - name: backend Compilation
+        run: |
+          cd server
+          find . -name "*.js" -exec node --check {} +
+
