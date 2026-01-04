@@ -25,6 +25,6 @@ jobs:
 
       - name: backend Compilation
         run: |
-          cd server
+          cd api
           find . -name "*.js" -exec node --check {} +
 
